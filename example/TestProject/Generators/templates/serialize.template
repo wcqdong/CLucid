@@ -1,0 +1,23 @@
+#ifndef GENERATORS_{{ upper(clazz.name) }}_GENERATED_H
+#define GENERATORS_{{ upper(clazz.name) }}_GENERATED_H
+
+
+class {{ clazz.name }}Serializer {
+public:
+    // 只演示生成过程，并没有真正实现序列化，所以注释掉
+    void read(/* Stream& stream, {{ clazz.name }}& obj */){
+    {% for property in clazz.properties %}
+        // obj.{{ property.name}} = stream.read{{ property.type }}();
+    {% endfor %}
+    }
+
+    void write(/* Stream& stream, {{ clazz.name }}& obj */){
+    {% for property in clazz.properties %}
+        // stream.write{{ property.type }}(obj.{{ property.name }});
+    {% endfor %}
+    }
+
+};
+
+
+#endif //GENERATORS_{{ upper(clazz.name) }}_GENERATED_H
