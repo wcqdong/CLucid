@@ -1,7 +1,7 @@
-.vscode
-.idea
-*.code-workspace
+**/*.vscode
+**/*.idea
+**/*.code-workspace
 *.test
 debug
-*.exe
-cmake-*
+**/*.exe
+**/*cmake-*
