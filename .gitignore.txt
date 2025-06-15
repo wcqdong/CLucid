@@ -4,4 +4,4 @@
 *.test
 debug
 **/*.exe
-**/*cmake-*
+**/cmake-*
