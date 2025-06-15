@@ -28,6 +28,55 @@ CLucid语法解析和反射的用途类似，作用都是获取c++代码自身�
 
 ## 使用方法
 
+# 例子
+
+
+```c++
+/// 可解析枚举
+enum ENUM() EItemType{
+    EItemType_1,
+    EItemType_2,
+    EItemType_3,
+};
+/// 可解析全局函数
+FUNCTION()
+void globalTest();
+/// 可解析CLASS
+class CLASS() Actor : public ActorBase{
+/// 可解析构造和析构
+    Actor(int aaa): a(aaa), b(7), c("jjj"){}
+    ~Actor(){}
+private:
+    /// 可解析成员变量
+    PROPERTY(serializable)
+    int a;
+    PROPERTY()
+    int b = 1;
+    PROPERTY(serializable)
+    std::string c = "kkk";
+    PROPERTY()
+    Item d = Item(77);
+
+    /// 可解析成员函数 
+    [[nodiscard]]
+    METHOD()
+    const int test1(int a, std::string bb) const;
+    
+    METHOD()
+    static int test2(int a, std::string bb) const;
+
+public:
+    METHOD()
+    long ActorBaseMethod(int a) override {
+        return 0;
+    }
+    /// 可解析复杂的成员函数
+    METHOD()
+    const Item * const * const test2(const int* a, const Item * const * const && it1, Item& it2, Item*& it3, const Item&& it4, std::string bb) const;
+};
+
+```
+
 # 仅解析c++语法
 
 接入和使用CLucid可查看demo工程的CMakeLists.txt和main.cpp
@@ -38,9 +87,4 @@ demo工程演示了如果扩展宏信息、匹配宏信息、获得想要的c++�
 
 查看Generators工程和TestProject工程
 
-有简单的实例演示如何利用CLucid语法解析生成代码，并接入到项目工程中实现自动生成代码。
-
-
-
-
-
+工程中有简单的实例演示如何利用CLucid语法解析并生成代码，并接入到实际项目工程中实现自动生成代码。
